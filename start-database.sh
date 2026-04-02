@@ -12,12 +12,36 @@
 # On Linux and macOS you can run this script directly - `./start-database.sh`
 
 # import env variables from .env
+if [ ! -f .env ]; then
+  echo "Missing .env file. Create it from .env.example first."
+  exit 1
+fi
+
 set -a
 source .env
 
-DB_PASSWORD=$(echo "$DATABASE_URL" | awk -F':' '{print $3}' | awk -F'@' '{print $1}')
-DB_PORT=$(echo "$DATABASE_URL" | awk -F':' '{print $4}' | awk -F'\/' '{print $1}')
-DB_NAME=$(echo "$DATABASE_URL" | awk -F'/' '{print $4}')
+if [ -z "${DATABASE_URL:-}" ]; then
+  echo "DATABASE_URL is not set in .env"
+  exit 1
+fi
+
+# Parse common Postgres URL shape:
+# postgresql://user:password@host:port/dbname?schema=public
+DB_URL_NO_PROTO="${DATABASE_URL#*://}"
+DB_CREDENTIALS_AND_HOST="${DB_URL_NO_PROTO%%/*}"
+DB_CREDENTIALS="${DB_CREDENTIALS_AND_HOST%%@*}"
+DB_HOST_PORT="${DB_CREDENTIALS_AND_HOST##*@}"
+DB_NAME_WITH_QUERY="${DB_URL_NO_PROTO#*/}"
+
+DB_PASSWORD="${DB_CREDENTIALS#*:}"
+DB_PORT="${DB_HOST_PORT##*:}"
+DB_NAME="${DB_NAME_WITH_QUERY%%\?*}"
+
+if [ -z "$DB_NAME" ] || [ -z "$DB_PORT" ] || [ -z "$DB_PASSWORD" ]; then
+  echo "Failed to parse DATABASE_URL. Expected format: postgresql://user:password@host:port/dbname"
+  exit 1
+fi
+
 DB_CONTAINER_NAME="$DB_NAME-postgres"
 
 if ! [ -x "$(command -v docker)" ] && ! [ -x "$(command -v podman)" ]; then
@@ -51,12 +75,12 @@ else
   fi
 fi
 
-if [ "$($DOCKER_CMD ps -q -f name=$DB_CONTAINER_NAME)" ]; then
+if [ "$($DOCKER_CMD ps -q -f "name=^${DB_CONTAINER_NAME}$")" ]; then
   echo "Database container '$DB_CONTAINER_NAME' already running"
   exit 0
 fi
 
-if [ "$($DOCKER_CMD ps -q -a -f name=$DB_CONTAINER_NAME)" ]; then
+if [ "$($DOCKER_CMD ps -q -a -f "name=^${DB_CONTAINER_NAME}$")" ]; then
   $DOCKER_CMD start "$DB_CONTAINER_NAME"
   echo "Existing database container '$DB_CONTAINER_NAME' started"
   exit 0
@@ -80,7 +104,7 @@ if [ "$DB_PASSWORD" = "password" ]; then
 fi
 
 $DOCKER_CMD run -d \
-  --name $DB_CONTAINER_NAME \
+  --name "$DB_CONTAINER_NAME" \
   -e POSTGRES_USER="postgres" \
   -e POSTGRES_PASSWORD="$DB_PASSWORD" \
   -e POSTGRES_DB="$DB_NAME" \

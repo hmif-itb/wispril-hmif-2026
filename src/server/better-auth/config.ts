@@ -4,7 +4,14 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { env } from "~/env";
 import { db } from "~/server/db";
 
+const authBaseUrl = env.BETTER_AUTH_URL.replace(/\/$/, "");
+
 export const auth = betterAuth({
+  baseURL: authBaseUrl,
+  trustedOrigins: [authBaseUrl],
+  account: {
+    storeStateStrategy: "cookie",
+  },
   database: prismaAdapter(db, {
     provider: "postgresql", // or "sqlite" or "mysql"
   }),
@@ -12,11 +19,21 @@ export const auth = betterAuth({
     enabled: true,
   },
   socialProviders: {
-    github: {
-      clientId: env.BETTER_AUTH_GITHUB_CLIENT_ID,
-      clientSecret: env.BETTER_AUTH_GITHUB_CLIENT_SECRET,
-      redirectURI: "http://localhost:3000/api/auth/callback/github",
+    google: {
+      clientId: env.BETTER_AUTH_GOOGLE_CLIENT_ID,
+      clientSecret: env.BETTER_AUTH_GOOGLE_CLIENT_SECRET,
+      redirectURI: `${authBaseUrl}/api/auth/callback/google`,
     },
+    ...(env.BETTER_AUTH_GITHUB_CLIENT_ID &&
+    env.BETTER_AUTH_GITHUB_CLIENT_SECRET
+      ? {
+          github: {
+            clientId: env.BETTER_AUTH_GITHUB_CLIENT_ID,
+            clientSecret: env.BETTER_AUTH_GITHUB_CLIENT_SECRET,
+            redirectURI: `${authBaseUrl}/api/auth/callback/github`,
+          },
+        }
+      : {}),
   },
 });
 
