@@ -181,7 +181,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/nicholaswisee/Code/projects/wispril-hmif-2026/generated/prisma",
+      "value": "C:\\Users\\Asus\\wispril-hmif-2026\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -190,17 +190,16 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-3.0.x",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/nicholaswisee/Code/projects/wispril-hmif-2026/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Users\\Asus\\wispril-hmif-2026\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../prisma",
   "clientVersion": "6.19.3",
@@ -209,6 +208,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
