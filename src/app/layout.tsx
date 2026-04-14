@@ -1,9 +1,10 @@
 import "~/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Rajdhani } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
+import { Navbar } from "~/app/_components/navbar";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -16,12 +17,19 @@ const geist = Geist({
   variable: "--font-geist-sans",
 });
 
+const rajdhani = Rajdhani({
+  subsets: ["latin"],
+  variable: "--font-rajdhani",
+  weight: ["400", "500", "600", "700"],
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geist.variable}`}>
-      <body>
+    <html lang="en" className={`${geist.variable} ${rajdhani.variable}`}>
+      <body className={`min-h-screen bg-black text-white bg-[url('/background.webp')] bg-cover bg-center bg-fixed bg-no-repeat ${rajdhani.className}`}>
+        <Navbar />
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
