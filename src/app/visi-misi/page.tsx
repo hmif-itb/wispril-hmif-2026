@@ -5,7 +5,7 @@ export default function VisiMisiPage() {
     <HydrateClient>
       <main className="min-h-screen px-10 py-24 flex flex-col gap-32">
 
-        {/* ===================== V I S I ===================== */}
+        {/* V I S I*/}
         <div className="relative w-[900px]">
 
           {/* KUNING */}
@@ -37,7 +37,7 @@ export default function VisiMisiPage() {
           </div>
         </div>
 
-        {/* ===================== M I S I ===================== */}
+        {/* M I S I  */}
         <div className="relative w-[900px] ml-auto">
 
           {/* KUNING */}
