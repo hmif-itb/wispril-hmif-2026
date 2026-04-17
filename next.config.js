@@ -12,7 +12,6 @@ const config = {
         protocol: "https",
         hostname: "drive.google.com",
       },
-      // Tambahkan domain lain jika perlu
     ],
   },
 };

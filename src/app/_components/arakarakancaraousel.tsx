@@ -12,7 +12,6 @@ const convertDriveLink = (originalLink: string) => {
   return originalLink;
 };
 
-// Contoh penggunaan pada data kamu
 const RAW_LINKS = [
   "https://drive.google.com/file/d/1WQRyo6Urt6-AYc9VMajcLkAnwO4GNWj1/view?usp=drive_link",
   "https://drive.google.com/file/d/1mla5lVASgwaJAGHE5LAN2XCSBxC8YUAU/view?usp=drive_link",
@@ -27,8 +26,6 @@ const RAW_LINKS = [
 ];
 
 const coverted_links = RAW_LINKS.map((link) => convertDriveLink(link));
-
-// Contoh data dummy, nanti bisa diganti dengan data dari Google Drive
 
 export default function ArakAracanCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
