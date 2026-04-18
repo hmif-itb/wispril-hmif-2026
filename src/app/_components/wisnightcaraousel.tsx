@@ -45,8 +45,7 @@ export default function WisnightCarousel() {
             width={637}
             height={106}
             className="w-full h-auto"
-            priority
-          />
+            priority/>
           <div className="absolute inset-0 h-full flex items-center justify-center">
             <h2 className="font-rajdhani text-[clamp(1.25rem,3vw,2.375rem)] font-semibold leading-none text-[#3e00cf]">
               Last Year&apos;s Wisnight
@@ -69,8 +68,7 @@ export default function WisnightCarousel() {
           return (
             <div
               key={index}
-              className={`absolute h-[120px] sm:h-[160px] md:h-[300px] lg:h-[390px] w-[85%] sm:w-[78%] md:w-[65%] lg:w-[60%] overflow-hidden rounded-lg md:rounded-xl bg-gray-800 transition-all duration-700 ease-in-out ${cls}`}
-            >
+              className={`absolute h-[120px] sm:h-[160px] md:h-[300px] lg:h-[390px] w-[85%] sm:w-[78%] md:w-[65%] lg:w-[60%] overflow-hidden rounded-lg md:rounded-xl bg-gray-800 transition-all duration-700 ease-in-out ${cls}`}>
               {imageErrors.has(img) ? (
                 <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-700 to-gray-900">
                   <span className="text-white text-sm">Image tidak bisa dimuat</span>
@@ -96,8 +94,7 @@ export default function WisnightCarousel() {
         <button
           onClick={prev}
           aria-label="Previous"
-          className="flex h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 items-center justify-center rounded-full bg-[#3E00CF] text-white transition-transform hover:scale-110"
-        >
+          className="flex h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 items-center justify-center rounded-full bg-[#3E00CF] text-white transition-transform hover:scale-110">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="m15 18-6-6 6-6" />
           </svg>
@@ -111,16 +108,14 @@ export default function WisnightCarousel() {
               aria-label={`Go to slide ${index + 1}`}
               className={`h-2 w-2 sm:h-2.5 sm:w-2.5 md:h-3 md:w-3 rounded-full transition-all duration-300 ${
                 index === currentIndex ? "scale-125 bg-white" : "bg-[#3E00CF] opacity-50"
-              }`}
-            />
+              }`}/>
           ))}
         </div>
 
         <button
           onClick={next}
           aria-label="Next"
-          className="flex h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 items-center justify-center rounded-full bg-[#3E00CF] text-white transition-transform hover:scale-110"
-        >
+          className="flex h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 items-center justify-center rounded-full bg-[#3E00CF] text-white transition-transform hover:scale-110">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="m9 18 6-6-6-6" />
           </svg>
