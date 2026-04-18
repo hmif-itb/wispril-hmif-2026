@@ -36,14 +36,13 @@ export function Navbar() {
             </Link>
           </li>
         </ul>
-
-        <div className="w-14 h-14 ml-2">
+        <Link href="/" className="w-14 h-14 ml-2 block hover:opacity-80 transition-opacity"> 
           <img
             src="/logo.svg"
             alt="Logo Placeholder"
             className="w-full h-full object-contain drop-shadow-md"
           />
-        </div>
+        </Link>
       </div>
     </nav>
   );
