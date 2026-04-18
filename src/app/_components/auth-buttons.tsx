@@ -16,8 +16,7 @@ export function SignInButton() {
   return (
     <button
       className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-      onClick={handleSignIn}
-    >
+      onClick={handleSignIn}>
       Sign in with Google
     </button>
   );
