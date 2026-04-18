@@ -78,7 +78,6 @@ export default function ArakArakanCarousel() {
                   className="object-cover"
                   sizes="(max-width: 768px) 80vw, 60vw"
                   priority={isActive}
-                  unoptimized
                   onError={() => handleImageError(img)}
                 />
               )}

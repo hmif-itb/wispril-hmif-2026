@@ -30,7 +30,7 @@ export default function WisnightCarousel() {
 
   const next = () => setCurrentIndex((p) => (p + 1) % images.length);
   const prev = () => setCurrentIndex((p) => (p - 1 + images.length) % images.length);
-  
+
   const handleImageError = (url: string) => {
     setImageErrors((prev) => new Set([...prev, url]));
   };
@@ -45,7 +45,7 @@ export default function WisnightCarousel() {
             width={637}
             height={106}
             className="w-full h-auto"
-            priority/>
+            priority />
           <div className="absolute inset-0 h-full flex items-center justify-center">
             <h2 className="font-rajdhani text-[clamp(1.25rem,3vw,2.375rem)] font-semibold leading-none text-[#3e00cf]">
               Last Year&apos;s Wisnight
@@ -81,7 +81,6 @@ export default function WisnightCarousel() {
                   className="object-cover"
                   sizes="(max-width: 768px) 78vw, 60vw"
                   priority={isActive}
-                  unoptimized
                   onError={() => handleImageError(img)}
                 />
               )}
@@ -106,9 +105,8 @@ export default function WisnightCarousel() {
               key={index}
               onClick={() => setCurrentIndex(index)}
               aria-label={`Go to slide ${index + 1}`}
-              className={`h-2 w-2 sm:h-2.5 sm:w-2.5 md:h-3 md:w-3 rounded-full transition-all duration-300 ${
-                index === currentIndex ? "scale-125 bg-white" : "bg-[#3E00CF] opacity-50"
-              }`}/>
+              className={`h-2 w-2 sm:h-2.5 sm:w-2.5 md:h-3 md:w-3 rounded-full transition-all duration-300 ${index === currentIndex ? "scale-125 bg-white" : "bg-[#3E00CF] opacity-50"
+                }`} />
           ))}
         </div>
 
