@@ -24,14 +24,12 @@ export default async function Home() {
           {/* Efek Glow Background */}
           <div className="absolute w-[200px] md:w-[350px] h-[200px] md:h-[350px] bg-[#3E00CF] blur-[100px] md:blur-[140px] rounded-full z-0 opacity-40 animate-pulse"></div>
 
-          {/* Efek Entrance + Floating Logo */}
           <Image 
             src="/logo.svg" 
             alt="Logo Utama" 
             width={281} height={265} 
             className="w-[120px] md:w-[180px] h-auto z-10 opacity-0 animate-[fade-in-up_1s_ease-out_forwards,_float_4s_ease-in-out_1s_infinite]" />
 
-          {/* Efek Entrance Text */}
           <Image 
             src="/wispril-text.webp" 
             alt="Wispril Text" 
