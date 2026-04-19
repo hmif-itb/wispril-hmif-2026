@@ -4,8 +4,6 @@ import { useRouter } from "next/navigation";
 import { authClient } from "~/server/better-auth/client";
 
 export function SignInButton() {
-  const router = useRouter();
-
   const handleSignIn = async () => {
     await authClient.signIn.social({
       provider: "google",

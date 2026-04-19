@@ -40,9 +40,9 @@ export default function VisiMisiSection() {
           }}
         >
             <p className="text-[clamp(0.875rem,1.5vw,1.375rem)] font-semibold leading-relaxed text-[#EDEBFF] max-w-[640px]">
-            "Wisuda April HMIF ITB 2026 sebagai wadah perayaan yang berkesan
+            &ldquo;Wisuda April HMIF ITB 2026 sebagai wadah perayaan yang berkesan
             untuk wisudawan, wadah apresiasi dari massa untuk wisudawan,
-            serta wadah pengembangan bagi panitianya"
+            serta wadah pengembangan bagi panitianya&rdquo;
           </p>
         </div>
       </div>
